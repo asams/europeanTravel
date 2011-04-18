@@ -5,3 +5,5 @@ country_id,country_name,country_capital,country_government,country_currency,coun
 4,Scotland,Edinburgh,Devolved Government within a Constitutional monarc,Pound Sterling,5194000,78772,English,Christianity
 5,Italy,Rome,Unitary Parliamentary Republic,Euro,60418711,301338,Italian,Catholic
 6,France,Paris,Unitary Semi-Presidential Republic,Euro,65821885,674843,French,Secular
+7,Germany,Berlin,Federal Parliamentary Republic,Euro,81757600,357021,German,Catholicism
+8,Austria,Vienna,Federal Parliamentary Republic,Euro,8356707,83855,German,Roman Catholic
