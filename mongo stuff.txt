@@ -1,2 +1,0 @@
-{ "title" : "Harry Potter", "year" : "2010" }
-{ "title" : "Star Wars", "year" : "1970" }

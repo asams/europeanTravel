@@ -1,3 +1,0 @@
-use travel;
-db.countries.update({ "_id" : ObjectId("4da4831fcd282329bdd90908"), "country_id" : "1", "country_name" : "England", "country_capital" : "London", "country_government" : "constitutional monarchy", "country_currency" : "pound sterling", "country_population" : "51446000", "country_area" : "130395", "country_official_language" : "English", "country_religion" : "Christianity" });
-db.countries.update({ "_id" : ObjectId("4da4831fcd282329bdd90908"), "country_id" : "1", "country_name" : "France", "country_capital" : "London", "country_government" : "constitutional monarchy", "country_currency" : "pound sterling", "country_population" : "51446000", "country_area" : "130395", "country_official_language" : "English", "country_religion" : "Christianity" });
