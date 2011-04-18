@@ -20,6 +20,7 @@
 		// iterate through the results
 		foreach ($cursor as $obj) {
 			if (($obj["city_id"]) == $cityID) {
+				echo "<center><H1>" . $obj["city_name"] . "</H1></center>";
 				echo "<table>";
 				echo "<tr><td width = \"50%\" valign = \"top\"><table width = \"100%\" cellpadding = 5><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
 				//echo "<tr><td><b>Country: </b></td><td>" . "<a href = \"country.php?id=" . $obj["country_id"] . "\"> $obj["city_name] </a>" . "</td></tr>";
