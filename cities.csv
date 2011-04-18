@@ -11,3 +11,7 @@ city_id,city_name,country_id,city_region,city_population,city_website
 10,Milan,5,Lombardy,1314745,http://www.comune.milano.it/
 11,Paris,6,Ile-de-France,2193031,http://www.paris.fr/portail/english/Portal.lut?page_id=8118
 12,Marseille,6,Provence-Alpes-Cote d'Azur,852395,http://www.marseille.fr
+13,Munich,7,Bavaria,1330440,http://www.muenchen.de/home/60093/Homepage.html
+14,Berlin,7,Berlin,3440441,http://www.visitberlin.de/en
+15,Salzburg,8,Salzburg,147571,http://www.salzburg.info/en/
+16,Vienna,8,Wien (Vienna),1712903,http://www.wien.info/en
