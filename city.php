@@ -11,34 +11,29 @@
 <?php
 	//get city ID from URL
 	$cityID = $_GET['id'];
+	 
+	$collection = $db -> cities;
 	
-	//get city information from the cities table
-	$query = "SELECT ci.*, co.country_name, a.attraction_name, a.attraction_id FROM cities ci NATURAL JOIN countries co NATURAL JOIN attractions a WHERE city_id = $cityID ORDER BY a.attraction_name";
-	$result = mysqli_query($db, $query) or die ("Error Querying Database - 1");
-	$attractionLinks = "<ul>";
-	
-	while($row = mysqli_fetch_array($result)){
-		$cityID = $row['city_id'];
-		$cityName = $row['city_name'];
-		$countryID = $row['country_id'];
-		$region = $row['city_region'];
-		$population = $row['city_population'];
-		$cityMap = $row['city_map'];
-		$cityPic = $row['city_pic'];
-		$flag = $row['city_flag'];
-		$coatOfArms = $row['city_coat_of_arms'];
-		$website = $row['city_website'];
-		$country_name = $row['country_name'];
-		$attractionName = $row['attraction_name'];
-		$attractionID = $row['attraction_id'];
+		//find a matching city
+		$cursor = $collection->find();
 		
-		$attractionLinks = $attractionLinks . "<li><a href = \"attraction.php?id=" . $attractionID . "\">" . $attractionName . "</a></li>";
-	}
-	
-	$attractionLinks = $attractionLinks . "</ul>";
+		// iterate through the results
+		foreach ($cursor as $obj) {
+			if (($obj["city_id"]) == $cityID) {
+				echo "<table>";
+				echo "<tr><td width = \"50%\" valign = \"top\"><table width = \"100%\" cellpadding = 5><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
+				//echo "<tr><td><b>Country: </b></td><td>" . "<a href = \"country.php?id=" . $obj["country_id"] . "\"> $obj["city_name] </a>" . "</td></tr>";
+				echo "<tr><td><b>City: </b></td><td>" . $obj["city_name"] . "</td></tr>";
+				echo "<tr><td><b>Region: </b></td><td>" . $obj["city_region"] . "</td></tr>";
+				echo "<tr><td><b>Population: </b></td><td>" . $obj["city_population"] . " people </td></tr>";
+				echo "<tr><td><b>Website: </b></td><td>" . "<a href = ".$obj["city_website"] . " >" . $obj["city_website"] . "</a>\n";
+				echo "</table>";
+				//echo "<img src = \"" . $cityPic . "\" alt = \"pic\" width = \"100%\" align = \"right\"/></td></tr></table>";
+			}
+		}
 
 	
-	//get the city comments
+	/**get the city comments
 	$query = "SELECT cic.*, ci.city_name, u.user_id, u.first_name, u.last_name FROM cities ci NATURAL JOIN city_comments cic NATURAL JOIN users u WHERE ci.city_id = $cityID ORDER BY cic.comment_date_submitted DESC";
 	$result = mysqli_query($db, $query) or die ("Error Querying Database - 2");
 
@@ -55,88 +50,24 @@
 		$comments_table = $comments_table . "<tr><td><br/>Name: <a href = \"accountOverview.php?id=" . $author_user_id . "\">" . $first_name . " " . $last_name . "</a><br/><br/>Subject: " . $comment_subject . "<br/><br/>Comment: " . $comment_body . "<br/><br/>Date: " . $comment_date . "<br/><br/></td></tr>";
 	}
 	$comments_table = $comments_table . "</table>";
-	
+	*/
 
 	//display the city info
-	echo "<table><tr><td><h1>";
+	/*echo "<table><tr><td><h1>";
 	echo ($flag != 'N/A' ? "<img src = \"" . $flag . "\" alt = \"flag\" width = 80 align = \"top\"/>" : "");
-	echo "   " . $cityName . "</td><td align = \"right\">";
-	
-	//if a user is logged in, then display the "add to favorites" option
-	//if (isset($_SESSION['user_id'])) {
-//		$_SESSION['city_id'] = $cityID;
-		//
-		//$query = "SELECT * FROM favoriteCities WHERE user_id = " . $user_id . " AND city_id = " . $cityID;
-		//$result = mysqli_query($db, $query) or die ("Error Querying Database - 3");
-//		
-	//	if($row = mysqli_fetch_array($result)){
-		//	echo " ";
-		//}
-		//else{
-//			echo "<a href=addFavCity.php?id=" . $cityID . "><img style = \"border:0px\"  src = \"addToFavStar.jpg\" alt = \"star\" width = \"50px\" /></a>";
-		//}
-	//}
-	
-	
-	echo "</td></tr>";
-	echo "<tr><td width = \"50%\" valign = \"top\"><table width = \"100%\" cellpadding = 5><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
-	echo "<tr><td><b>Country: </b></td><td>" . "<a href = \"country.php?id=" . $countryID . "\"> $country_name </a>" . "</td></tr>";
-	echo "<tr><td><b>Region: </b></td><td>" . $region . "</td></tr>";
-	echo "<tr><td><b>Attractions Featured <br/>on TravelGuide: </b></td><td>" . $attractionLinks . "</td></tr>";
-	echo "<tr><td><b>Population: </b></td><td>" . $population . " people </td></tr>";
-	echo "<tr><td><b>Website: </b></td><td>" . ($website != 'N/A' ? "<a href = \" $website \"> $website </a>" : $website) . "</td></tr>";
-	echo "</table></td><td>";
-	echo "<img src = \"" . $cityPic . "\" alt = \"pic\" width = \"100%\" align = \"right\"/></td></tr></table>";
-	
-
-
-	//if a user is logged in, then display the "add to favorites" and rating portion
-	if (isset($_SESSION['user_id'])) {
-		$_SESSION['city_id'] = $cityID;
-		include("starCityCode.php");
-		
-		$query = "SELECT * FROM favoriteCities WHERE user_id = " . $user_id . " AND city_id = " . $cityID;
-		$result = mysqli_query($db, $query) or die ("Error Querying Database - 3");
-		
-		if($row = mysqli_fetch_array($result)){
-			echo "<b>You've already added " . $cityName . " to your favorites!</b><br/><br/>";
-		}
-		
-		else{
-			echo "<b>Add to favorites: </b><a href=addFavCity.php?id=" . $cityID . "><img style = \"border:0px\"  src = \"addToFavStar.jpg\" alt = \"star\" width = \"50px\" /></a>";
-		}
-		
-	//otherwise, display the average user rating for this attraction
-	} else {
-
-  		$qur1 = "select avg(rating) as xx from cityRatings where city_id='".$cityID."' group by city_id";
-  		$result1 = mysqli_query($db,$qur1);
-  		if($res1 = mysqli_fetch_array($result1))
-  		{
-			$rating = $res1['xx'];
-	  	}
-
-		$rating = round($rating, 1);
-		if ($rating <= 0) {
-			$rating = "No Ratings Yet";
-		}
-
-		echo "<br/><br>";
-		echo "<b><i>Average User Rating: </b>$rating </i><br/><br/><br/><br/>";
-
-	}
-
+	echo "   " . $cityName . "</td><td align = \"right\">"
 	
 	echo "<center><br/>";
 	echo "<img src = \"" . $cityMap . "\" alt = \"map\" width = \"55%\" align = \"center\" /><br/><br/></center>";
     	if ($comments_table <> "<table rules = rows width = \"90%\"></table>"){
 		echo "<H2>Comments from users:</H2>";
 		echo $comments_table;
-	}
+	}*/
 	
 
 	//if a user is logged in, then allow them to comment on the city
-	if( isset($_COOKIE['user_id'])){
+	//if( isset($_COOKIE['user_id'])){
+/*	
 ?>
 
 <H2>Share your thoughts about <?php echo $cityName ?>:</H2>
@@ -219,7 +150,8 @@ echo "</table></center>";
 <?php
 }
 ?>
-
+*/
+?>
 </div>
 
 <?php
