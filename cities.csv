@@ -1,0 +1,9 @@
+city_id,city_name,country_id,city_region,city_population,city_website
+1,London,1,London,7556900,http://www.cityoflondon.gov.uk/
+2,Bath,1,South West,83992,http://www.cityofbath.co.uk/
+3,Madrid,2,Community of Madrid,3255950,http://www.aboutmadrid.com/
+4,Barcelona,2,Catalonia,1621537,http://www.aboutbarcelona.com/
+5,Ankara,3,Central Anatolia,4306105,http://ankara.com/
+6,Istanbul,3,Marmara,13120596,http://english.istanbul.com/
+7,Edinburgh,4,City of Edinburgh,477660,tp://www.edinburgh.org/
+8,Glasgow,4,Glasgow,580690,http://www.seeglasgow.com/
