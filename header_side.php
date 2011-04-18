@@ -13,33 +13,29 @@ else{
 ?>
 
 <?php
-/**
-	//get count for countries, cities, and attractions from db
-	$query = "SELECT COUNT(DISTINCT country_id) FROM countries";
-
-//	$result = mysqli_query($db, $query) or die ("Error Querying Database");
+	$collection = $db -> countries;
 	
-	while($row = mysqli_fetch_array($result)){
-		$countryCount = $row['COUNT(DISTINCT country_id)'];
+	//find a matching country
+	$cursor = $collection->find();
+	$countryCount = 0;
+	// iterate through the results
+	foreach ($cursor as $obj) {
+		$countryCount++;
+		
 	}
 	
-	$query = "SELECT COUNT(DISTINCT city_id) FROM cities";
-
-//	$result = mysqli_query($db, $query) or die ("Error Querying Database");
+	 $collection = $db -> cities;
 	
-	while($row = mysqli_fetch_array($result)){
-		$cityCount = $row['COUNT(DISTINCT city_id)'];
+	//find a matching country
+	$cursor = $collection->find();
+	$cityCount = 0;
+	// iterate through the results
+	foreach ($cursor as $obj) {
+		
+		$cityCount++;
+		
 	}
-	
-	$query = "SELECT COUNT(DISTINCT attraction_id) FROM attractions";
-
-//	$result = mysqli_query($db, $query) or die ("Error Querying Database");
-	
-	while($row = mysqli_fetch_array($result)){
-		$attractionCount = $row['COUNT(DISTINCT attraction_id)'];
-	}
-
-**/
+		
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -62,11 +58,8 @@ else{
 <div align="right"><form action="search.php" method="post" class="searchform">
 
 <select name="type">
-	<option class="group" value="attraction">Attraction</option>
 	<option class="group" value="city">City</option>
 	<option class="group" value="country">Country</option>
-	<option class="group" value="type">Type</option>
-	<option class="group" value="user">User</option>
 </select>
 <input type="text" id="searchq" name="searchedFor" />
 <input type="submit" class="formbutton" value="Search" />
@@ -135,6 +128,18 @@ while($row = mysqli_fetch_array($result)) {
 
 }
 **/
+
+		$collection = $db -> countries;
+	
+		//find a matching country
+		$cursor = $collection->find();
+		
+		// iterate through the results
+		foreach ($cursor as $obj) {
+			echo "<a href=country.php?id=".$obj["country_id"] . " >" . $obj["country_name"] . "</a><br>";
+			
+		}
+
 ?>
 
 
@@ -149,16 +154,32 @@ while($row = mysqli_fetch_array($result)) {
 <?php
 //cities link and city count:
 ?>
-<div class="nav-box">
+<div class="nav-box2">
 <div class="s1">
 </div>
 <div class="s2">
 </div>
-<div class="nav-box-text">
+<div class="nav-box-text2">
 <span style="font-family:geneva,arial;color:#153E7E;font-size:14px;font-weight:bold;padding-left:1px;"><a href="cities.php">CITIES</a></span>
 <br />
 <span style="font-family:geneva,arial;color:#6CA2BE;font-size:10px;font-weight:bold;  font-style: italic; letter-spacing: 2px;
- padding-left:1px;">Total: <?php echo $cityCount ?></span>
+ padding-left:1px;">Total: <?php echo $cityCount ?>
+
+ <?php
+ $collection = $db -> cities;
+	
+	//find a matching country
+	$cursor = $collection->find();
+	
+	// iterate through the results
+	foreach ($cursor as $obj) {
+		
+		echo "<br><a href=city.php?id=".$obj["city_id"] . " >" . $obj["city_name"] . "</a>";
+		
+	}
+
+?>
+ </span>
 </div></div>
 
 
