@@ -1,10 +1,10 @@
 <?php
 	//connect
-	$m = new Mongo();
+	//$m = new Mongo();
 
 
 	//select a database
-	$db = $m->travel;
+	//$db = $m->travel;
 	
 	
 ?>
