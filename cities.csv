@@ -7,3 +7,7 @@ city_id,city_name,country_id,city_region,city_population,city_website
 6,Istanbul,3,Marmara,13120596,http://english.istanbul.com/
 7,Edinburgh,4,City of Edinburgh,477660,tp://www.edinburgh.org/
 8,Glasgow,4,Glasgow,580690,http://www.seeglasgow.com/
+9,Rome,5,Lazio,2754440,http://www.comune.roma.it/was/wps/portal/pcr
+10,Milan,5,Lombardy,1314745,http://www.comune.milano.it/
+11,Paris,6,Ile-de-France,2193031,http://www.paris.fr/portail/english/Portal.lut?page_id=8118
+12,Marseille,6,Provence-Alpes-Cote d'Azur,852395,http://www.marseille.fr
