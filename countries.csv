@@ -1,9 +1,9 @@
-country_id,country_name,country_capital,country_government,country_currency,country_population,country_area,country_official_language,country_religion
-1,England,London,constitutional monarchy,pound sterling,51446000,130395,English,Christianity
-2,Spain,Madrid,Parliamentary democracy and Constitutional monarchy,euro,46030109,504030,Spanish,Catholicism
-3,Turkey,Ankara,Parliamentary Republic,Turkish Lira,73722988,783562,Turkish,Islam
-4,Scotland,Edinburgh,Devolved Government within a Constitutional monarc,Pound Sterling,5194000,78772,English,Christianity
-5,Italy,Rome,Unitary Parliamentary Republic,Euro,60418711,301338,Italian,Catholic
-6,France,Paris,Unitary Semi-Presidential Republic,Euro,65821885,674843,French,Secular
-7,Germany,Berlin,Federal Parliamentary Republic,Euro,81757600,357021,German,Catholicism
-8,Austria,Vienna,Federal Parliamentary Republic,Euro,8356707,83855,German,Roman Catholic
+country_id,country_name,country_capital,country_government,country_currency,country_population,country_area,country_official_language,country_religion,country_website,country_flag,country_map
+1,England,London,constitutional monarchy,pound sterling,51446000,130395,English,Christianity,http://enjoyengland.com/,countryImages/england_flag.gif,countryImages/england_map.jpg
+2,Spain,Madrid,Parliamentary democracy and Constitutional monarchy,euro,46030109,504030,Spanish,Catholicism,http://www.spain.info/,countryImages/spain_flag.jpg,countryImages/spain_map.jpg
+3,Turkey,Ankara,Parliamentary Republic,Turkish Lira,73722988,783562,Turkish,Islam,http://www.tourismturkey.org/,countryImages/turkey_flag.jpg,countryImages/turkey_map.jpg
+4,Scotland,Edinburgh,Devolved Government within a Constitutional monarc,Pound Sterling,5194000,78772,English,Christianity,http://www.visitscotland.com/,countryImages/scotland_flag.jpg,countryImages/scotland_map.jpg
+5,Italy,Rome,Unitary Parliamentary Republic,Euro,60418711,301338,Italian,Catholic,http://www.italia.it/en/home.html,countryImages/italy_flag.gif,countryImages/italy_map.jpg
+6,France,Paris,Unitary Semi-Presidential Republic,Euro,65821885,674843,French,Secular,http://us.franceguide.com/,countryImages/france_flag.jpg,countryImages/france_map.gif
+7,Germany,Berlin,Federal Parliamentary Republic,Euro,81757600,357021,German,Catholicism,http://www.germany-tourism.de/,countryImages/germany_flag.jpg,countryImages/germany_map.jpg
+8,Austria,Vienna,Federal Parliamentary Republic,Euro,8356707,83855,German,Roman Catholic,http://www.austria.info/us,countryImages/austria_flag.jpg,countryImages/austria_map.jpg 

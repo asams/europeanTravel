@@ -1,17 +1,17 @@
-city_id,city_name,country_id,city_region,city_population,city_website
-1,London,1,London,7556900,http://www.cityoflondon.gov.uk/
-2,Bath,1,South West,83992,http://www.cityofbath.co.uk/
-3,Madrid,2,Community of Madrid,3255950,http://www.aboutmadrid.com/
-4,Barcelona,2,Catalonia,1621537,http://www.aboutbarcelona.com/
-5,Ankara,3,Central Anatolia,4306105,http://ankara.com/
-6,Istanbul,3,Marmara,13120596,http://english.istanbul.com/
-7,Edinburgh,4,City of Edinburgh,477660,tp://www.edinburgh.org/
-8,Glasgow,4,Glasgow,580690,http://www.seeglasgow.com/
-9,Rome,5,Lazio,2754440,http://www.comune.roma.it/was/wps/portal/pcr
-10,Milan,5,Lombardy,1314745,http://www.comune.milano.it/
-11,Paris,6,Ile-de-France,2193031,http://www.paris.fr/portail/english/Portal.lut?page_id=8118
-12,Marseille,6,Provence-Alpes-Cote d'Azur,852395,http://www.marseille.fr
-13,Munich,7,Bavaria,1330440,http://www.muenchen.de/home/60093/Homepage.html
-14,Berlin,7,Berlin,3440441,http://www.visitberlin.de/en
-15,Salzburg,8,Salzburg,147571,http://www.salzburg.info/en/
-16,Vienna,8,Wien (Vienna),1712903,http://www.wien.info/en
+city_id,city_name,country_id,city_region,city_population,city_website,city_picture,city_map
+1,London,1,London,7556900,http://www.cityoflondon.gov.uk/,cityImages/london_pic.jpg,cityImages/london_map.jpg
+2,Bath,1,South West,83992,http://www.cityofbath.co.uk/,cityImages/bath_pic.jpg,cityImages/bath_map.jpg
+3,Madrid,2,Community of Madrid,3255950,http://www.aboutmadrid.com/,cityImages/madrid_pic.jpg,cityImages/madrid_map.jpg
+4,Barcelona,2,Catalonia,1621537,http://www.aboutbarcelona.com/,cityImages/barcelona_pic.jpg,cityImages/barcelona_map.jpg
+5,Ankara,3,Central Anatolia,4306105,http://ankara.com/,cityImages/ankara_pic.jpg,cityImages/ankara_map.jpg
+6,Istanbul,3,Marmara,13120596,http://english.istanbul.com/,cityImages/istanbul_pic.jpg,cityImages/istanbul_map.jpg
+7,Edinburgh,4,City of Edinburgh,477660,tp://www.edinburgh.org/,cityImages/edinburgh_pic.jpg,cityImages/edinburgh_map.jpg
+8,Glasgow,4,Glasgow,580690,http://www.seeglasgow.com/,cityImages/glasgow_pic.jpg,cityImages/glasgow_map.jpg
+9,Rome,5,Lazio,2754440,http://www.comune.roma.it/was/wps/portal/pcr,cityImages/rome_pic.jpg,cityImages/rome_map.gif
+10,Milan,5,Lombardy,1314745,http://www.comune.milano.it/,cityImages/milan_pic.jpg,cityImages/milan_map.jpg
+11,Paris,6,Ile-de-France,2193031,http://www.paris.fr/portail/english/Portal.lut?page_id=8118,cityImages/paris_pic.jpg,cityImages/paris_map.gif
+12,Marseille,6,Provence-Alpes-Cote d'Azur,852395,http://www.marseille.fr,cityImages/marseille_pic.jpg,cityImages/marseille_map.gif
+13,Munich,7,Bavaria,1330440,http://www.muenchen.de/home/60093/Homepage.html,cityImages/munich_pic.jpg,cityImages/munich_map.gif
+14,Berlin,7,Berlin,3440441,http://www.visitberlin.de/en,cityImages/berlin_pic.jpg,cityImages/berlin_map.jpg
+15,Salzburg,8,Salzburg,147571,http://www.salzburg.info/en/,cityImages/salzburg_pic.jpg,cityImages/salzburg_map.jpg
+16,Vienna,8,Wien (Vienna),1712903,http://www.wien.info/en,cityImages/vienna_pic.jpg,cityImages/vienna_map.jpg
