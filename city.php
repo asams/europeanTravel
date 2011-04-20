@@ -21,6 +21,7 @@
 			if (($obj["city_id"]) == $cityID) {
 			
 				$countryID = $obj["country_id"];
+				$cityName = $obj["city_name"];
 				
 				//find country
 				$collection2 = $db -> countries;
@@ -49,125 +50,51 @@
 		}
 
 	
-	/**get the city comments
-	$query = "SELECT cic.*, ci.city_name, u.user_id, u.first_name, u.last_name FROM cities ci NATURAL JOIN city_comments cic NATURAL JOIN users u WHERE ci.city_id = $cityID ORDER BY cic.comment_date_submitted DESC";
-	$result = mysqli_query($db, $query) or die ("Error Querying Database - 2");
-
-	$comments_table = "<table rules = rows width = \"90%\">";
-	while($row = mysqli_fetch_array($result)){
-		$cityName = $row['city_name'];
-		$author_user_id = $row['user_id'];
-		$first_name = $row['first_name'];
-		$last_name = $row['last_name'];
-		$comment_subject = $row['comment_subject'];
-		$comment_body = $row['comment_body'];
-		$comment_date = $row['comment_date_submitted'];
-		
-		$comments_table = $comments_table . "<tr><td><br/>Name: <a href = \"accountOverview.php?id=" . $author_user_id . "\">" . $first_name . " " . $last_name . "</a><br/><br/>Subject: " . $comment_subject . "<br/><br/>Comment: " . $comment_body . "<br/><br/>Date: " . $comment_date . "<br/><br/></td></tr>";
-	}
-	$comments_table = $comments_table . "</table>";
-	*/
-
-	//display the city info
-	/*echo "<table><tr><td><h1>";
-	echo ($flag != 'N/A' ? "<img src = \"" . $flag . "\" alt = \"flag\" width = 80 align = \"top\"/>" : "");
-	echo "   " . $cityName . "</td><td align = \"right\">"
-	
-	echo "<center><br/>";
-	echo "<img src = \"" . $cityMap . "\" alt = \"map\" width = \"55%\" align = \"center\" /><br/><br/></center>";
-    	if ($comments_table <> "<table rules = rows width = \"90%\"></table>"){
-		echo "<H2>Comments from users:</H2>";
-		echo $comments_table;
-	}*/
-	
-
-	//if a user is logged in, then allow them to comment on the city
-	//if( isset($_COOKIE['user_id'])){
-/*	
 ?>
 
-<H2>Share your thoughts about <?php echo $cityName ?>:</H2>
+<br/><br/><br/><br/>
+<h1>Comments for <?php echo $cityName ?> : </h1><br/>
+
+<br/><br/>
 <form action="cityCommentSubmitted.php" method="post" class="form">
 <center>
 <table>
 
-<tr><th>Subject:</th><td><input type="text" id="subject" name="subject" size = 75 /></td></tr>
-<tr><th>Comment:</th><td><textarea name="comment" id="comment" rows = "4" cols = "60"></textarea>
-<input type="hidden" name="city_id" value=<?php echo $cityID ?>></td></tr>
-
+<tr><th><big>Name:</th><td><input type="text" id="name" name="name" size =75 /></td></tr>
+<tr><th><big>Subject:</th><td><input type="text" id="subject" name="subject" size =75px /></td></tr>
+<tr><th><big>Comment:</th><td><textarea name="comment" id="comment" rows = "4" ></textarea></td></tr>
+<input type="hidden" name="city_id" value= <?php echo $cityID ?> />
 <tr><td colspan = 2><center><input type="submit" class="formbutton" value="Submit" /></center></td></tr>
+
+</table>
+</center>
 </form>
-</table>
 
-</center>
-</br></br>
-<H2>Share your pictures of <?php echo $cityName ?>: </H2>
-<center>
-<table>
-<form enctype="multipart/form-data" action="cityPhotoSubmitted.php" method="POST">
-<tr><th align=left>Subject:</th><td><input type="text" id="subject" name="subject" size = 75 /></td></tr>
-<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-<input type="hidden" name="city_id" value=<?php echo $cityID ?> >
-<tr><th>Choose a file to upload: </th><td><input name="photo" type="file" /><br/></td></tr>
-<tr><th align=center colspan = 2><input type="submit" value="Upload File" /></th></tr>
-</form> 
-</table>
+<br/><br/><br/>
+<h1>Comments we've received from our viewers:</h1>
 
-</center>
-<br/><br/></br></br>
-
-<!--<H2>Photographs we've received from our viewers:</H2> -->
+<table rules = rows>
 
 <?php
-//table of uploaded photos
 
-$query = "SELECT cp.* FROM city_photos cp NATURAL JOIN cities ci WHERE cp.city_id = '$cityID' ORDER BY cp.photo_date_submitted"; 
-$result = mysqli_query($db, $query)or die("Error Querying Database");
 
-$count = 0;
-
-while($row = mysqli_fetch_array($result)) {
-	if($count == 0){
-	?>
-	<H2>Photographs we've received from our viewers:</H2>
-	<?php
-	echo "<center><table width = \"90%\" cellpadding = 15>";
+	//get the general comments that we've received from users	
+	$collection = $db -> city_comments;
+	$cursor = $collection -> find();
+	
+	foreach ($cursor as $obj) {
+		if (($obj["city_id"]) == $cityID) {
+			$cityID = $obj["city_id"];
+			$name = $obj["name"];
+			$subject = $obj["subject"];
+			$comment = $obj["comment"];
+			$date_submitted = $obj["date"];
+			echo "<tr><td><br/>Name: " . $name . "<br/><br/>Subject: " . $subject . "<br/><br/>Comment: " . $comment . "<br/><br/>Date: " . $date_submitted . "<br/><br/></td></tr>";
+		}
 	}
 
-	$count ++;
-	$subject = $row['subject'];
-	$photo = $row['photo'];
-	$date_submitted = $row['photo_date_submitted'];
-	$photoID = $row['photo_id'];
-						
-	if($count % 5 == 1){
-		echo "<tr valign = top>";
-	}
-	//What to echo in each cell
-	echo "<td width = \"20%\" align = center><a href=cityPhoto.php?id=" . $photoID . ">"  . "<img src = \"" . $photo . "\" alt = \"flag\" width = \"200\" />   ";
-	echo "<br/><a href=cityPhoto.php?id=" . $photoID . ">" . $subject . "</a><br/><br/></td>";
-	if ($count % 5 == 0){
-		echo "</tr>";
-	}
-
-}
-echo "</table></center>";		
-
-//otherwise, direct them to log in
-} else {
 ?>
-	<H2>Want to share your thoughts about <?php echo $cityName ?>?</H2>
-	<H3>Create a personal account on TravelGuide in order to comment on countries, cities, and attractions, and enjoy all the other perks of being a TravelGuide member!  
-	<br/><br/>If you already have an account, just log in!	
-	<br/>
-	<br/>
-	Click <a href = "login.php">here</a> to login, or <a href = "register.php">here</a> to create an account!</H3>
-
-<?php
-}
-?>
-*/
-?>
+</table>
 </div>
 
 <?php
