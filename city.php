@@ -20,16 +20,19 @@
 		// iterate through the results
 		foreach ($cursor as $obj) {
 			if (($obj["city_id"]) == $cityID) {
-				echo "<center><H1>" . $obj["city_name"] . "</H1></center>";
+				echo "<H1>" . $obj["city_name"] . "</H1>";
 				echo "<table>";
-				echo "<tr><td width = \"50%\" valign = \"top\"><table width = \"100%\" cellpadding = 5><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
+				echo "<tr><td width = \"40%\" valign = \"top\">";
+				echo "<table width = \"100%\" cellpadding = 5><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
 				//echo "<tr><td><b>Country: </b></td><td>" . "<a href = \"country.php?id=" . $obj["country_id"] . "\"> $obj["city_name] </a>" . "</td></tr>";
 				echo "<tr><td><b>City: </b></td><td>" . $obj["city_name"] . "</td></tr>";
 				echo "<tr><td><b>Region: </b></td><td>" . $obj["city_region"] . "</td></tr>";
 				echo "<tr><td><b>Population: </b></td><td>" . $obj["city_population"] . " people </td></tr>";
-				echo "<tr><td><b>Website: </b></td><td>" . "<a href = ".$obj["city_website"] . " >" . $obj["city_website"] . "</a>\n";
+				echo "<tr><td><b>Website: </b></td><td>" . "<a href = ".$obj["city_website"] . " >" . $obj["city_website"] . "</a></td></tr>\n";
+				echo "</table></td>";
+				echo "<td><img src = \"" . $obj["city_picture"] . "\" alt = \"pic\" width = \"100%\" align = \"right\"/></td></tr>";
+				echo "<tr><td colspan = 2><br/><br/><br/><center><img src = \"" . $obj["city_map"] . "\" alt = \"pic\" width = \"65%\" /></td></center></tr>";
 				echo "</table>";
-				//echo "<img src = \"" . $cityPic . "\" alt = \"pic\" width = \"100%\" align = \"right\"/></td></tr></table>";
 			}
 		}
 
