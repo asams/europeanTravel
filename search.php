@@ -22,20 +22,25 @@
 
 	//if the type is of country, then look and see if the term searched is similar to any of the country names
 	if ($type == 'country') {
-		$collection = $db -> countries;
+		$collection = $db->countries;
 	
 		//find a matching country
-		$cursor = $collection->find();
+		//$cursor = $collection->find();
 		
+		$query = array("country_name" => $termSearched);
+
+		$cursor = $collection->find($query);
+
 		
-		//{"country_name": "England" )}
+		//{"country_name": "England"}
+		//array("country_name" -> "/." . $termSearched . ".*/i"
 		echo '<u><big>Countries</u></big><br>';
 		
 		// iterate through the results
 		foreach ($cursor as $obj) {
-			if (strtolower($obj["country_name"]) == strtolower($termSearched)) {
+			//if (strtolower($obj["country_name"]) == strtolower($termSearched)) {
 				echo "<a href=country.php?id=".$obj["country_id"] . " >" . $obj["country_name"] . "</a>\n";
-			}
+			//}
 		}
 		
 		
