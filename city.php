@@ -18,12 +18,12 @@
 		$cursor = $collection->find();
 		
 		// iterate through the results
-		foreach ($cursor as $obj) {
+		//foreach ($cursor as $obj) {
 			if (($obj["city_id"]) == $cityID) {
-				echo "<H1>" . $obj["city_name"] . "</H1>";
+				echo "<H1><font size = 8><b>" . $obj["city_name"] . "</b></font></H1>";
 				echo "<table>";
 				echo "<tr><td width = \"40%\" valign = \"top\">";
-				echo "<table width = \"100%\" cellpadding = 5><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
+				echo "<table width = \"100%\" cellpadding = 5 style = \"font-size: 13pt;\"><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
 				//echo "<tr><td><b>Country: </b></td><td>" . "<a href = \"country.php?id=" . $obj["country_id"] . "\"> $obj["city_name] </a>" . "</td></tr>";
 				echo "<tr><td><b>City: </b></td><td>" . $obj["city_name"] . "</td></tr>";
 				echo "<tr><td><b>Region: </b></td><td>" . $obj["city_region"] . "</td></tr>";
@@ -34,7 +34,7 @@
 				echo "<tr><td colspan = 2><br/><br/><br/><center><img src = \"" . $obj["city_map"] . "\" alt = \"pic\" width = \"65%\" /></td></center></tr>";
 				echo "</table>";
 			}
-		}
+		//}
 
 	
 	/**get the city comments
