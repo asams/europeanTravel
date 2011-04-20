@@ -20,14 +20,31 @@
 		
 		
 		//{"country_name": "England" )}
-		echo '<u><big>Countries</u></big><br>';
+		//echo '<u><big>Countries</u></big><br>';
+		
+		$count = 0;
+		
+		//start table
+		echo "<center><table width = \"90%\" cellpadding = 15>";
 		
 		// iterate through the results
 		foreach ($cursor as $obj) {
-			echo "<a href=country.php?id=".$obj["country_id"] . " >" . $obj["country_name"] . "</a><br>";
+			$count ++;
+			//echo "<a href=country.php?id=".$obj["country_id"] . " >" . $obj["country_name"] . "</a><br>";
+			
+			if($count % 4 == 1){
+				echo "<tr valign = top>";
+			}
+			echo "<td width = \"25%\" align = center><a href=country.php?id=" .$obj["country_id"] . "><img src = \"" .$obj["country_flag"] 
+					. "\" alt = \"pic\" width = \"100%\" />   ";
+			echo '<br/><b>' .$obj["country_name"] . '</b></a><br></td>';
+			if ($count % 4 == 0){
+				echo "</tr>";
+			}
 			
 		}
 
+		echo "</table>";
 
 //get each of the country's information from the table
 $count = 0;

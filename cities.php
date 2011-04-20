@@ -17,38 +17,35 @@
 	$cursor = $collection->find();
 	
 		
-	echo '<u><big><b>Cities</u></big><br>';
+	//echo '<u><big><b>Cities</u></big><br>';
+	
+	//count the number of results printed
+	$count = 0;
+	
+	//start table
+	echo "<center><table width = \"90%\" cellpadding = 15>";
 	
 	// iterate through the results
 	foreach ($cursor as $obj) {
+		$count++;
 		
-		echo "<a href=city.php?id=".$obj["city_id"] . " >" . $obj["city_name"] . "</a><br>";
+		//echo "<a href=city.php?id=".$obj["city_id"] . " >" . $obj["city_name"] . "</a><br>";
+		
+		if($count % 4 == 1){
+			echo "<tr valign = top>";
+		}
+		echo "<td width = \"25%\" align = center><a href=city.php?id=" .$obj["city_id"] . "><img src = \"" .$obj["city_picture"] 
+				. "\" alt = \"pic\" width = \"100%\" />   ";
+    	echo '<br/><b>' .$obj["city_name"] . '</b></a><br></td>';
+		if ($count % 4 == 0){
+			echo "</tr>";
+		}
 		
 	}
-	echo "</b>";
-	//get the information for each city
-	// $query = "SELECT countries.country_name, cities.city_name, cities.city_id, cities.city_pic FROM cities INNER JOIN countries ON countries.country_id=cities.country_id ORDER BY cities.city_name"; 
-	// $result = mysqli_query($db, $query)or die("Error Querying Database");
-
-	// $count = 0;
-	// echo "<center><table width = \"90%\" cellpadding = 15>";
-	// while($row = mysqli_fetch_array($result)) {
-		// $count ++;
-		// $cityName = $row['city_name'];
-		// $cityID = $row['city_id'];
-		// $countryName = $row['country_name'];
-		// $cityPic = $row['city_pic'];
 	
-		// if($count % 5 == 1){
-			// echo "<tr valign = top>";
-		// }
-		// echo "<td width = \"20%\" align = center><a href=city.php?id=" . $cityID . "><img src = \"" . $cityPic . "\" alt = \"pic\" width = \"100%\" /></a>   ";
-    		// echo '<br/><a href=city.php?id=' . $cityID . '>' . $cityName . ', <br/>' . $countryName . '</a><br>';
-		// if ($count % 5 == 0){
-			// echo "</tr>";
-		// }
-	// }
-	// echo "</table></center>";					
+	echo "</table>";
+	echo "</b>";
+	
 
 ?>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
