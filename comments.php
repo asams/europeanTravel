@@ -19,18 +19,17 @@
 
 
 	//get the general comments that we've received from users	
-	$query = "SELECT * FROM comments ORDER BY comment_date_submitted DESC";
-
-	$result = mysqli_query($db, $query) or die ("Error Querying Database");
+	$collection = $db -> comments;
+	$cursor = $collection -> find();
 	
-	while($row = mysqli_fetch_array($result)){
-		$name = $row['comment_name'];
-		$subject = $row['comment_subject'];
-		$comment = $row['comment_body'];
-		$date_submitted = $row['comment_date_submitted'];
-		
-		//display the comment
+	
+	foreach ($cursor as $obj) {
+		$name = $obj["name"];
+		$subject = $obj["subject"];
+		$comment = $obj["comment"];
+		$date_submitted = $obj["date"];
 		echo "<tr><td><br/>Name: " . $name . "<br/><br/>Subject: " . $subject . "<br/><br/>Comment: " . $comment . "<br/><br/>Date: " . $date_submitted . "<br/><br/></td></tr>";
+	
 	}
 	
 ?>
