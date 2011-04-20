@@ -11,20 +11,32 @@
 <?php
 	//get city ID from URL
 	$cityID = $_GET['id'];
-	 
 	$collection = $db -> cities;
-	
+		
 		//find a matching city
 		$cursor = $collection->find();
 		
 		// iterate through the results
-		//foreach ($cursor as $obj) {
+		foreach ($cursor as $obj) {
 			if (($obj["city_id"]) == $cityID) {
+			
+				$countryID = $obj["country_id"];
+				
+				//find country
+				$collection2 = $db -> countries;
+				$cursor2 = $collection2-> find();
+				
+				foreach ($cursor2 as $obj2){
+					if (($obj2["country_id"]) == $countryID){
+						$countryName = $obj2["country_name"];
+					}					
+				}
+			
 				echo "<H1><font size = 8><b>" . $obj["city_name"] . "</b></font></H1>";
 				echo "<table>";
 				echo "<tr><td width = \"40%\" valign = \"top\">";
 				echo "<table width = \"100%\" cellpadding = 5 style = \"font-size: 13pt;\"><tr><td colspan = 2><p><H2>Info: </H2></p></td></tr>";
-				//echo "<tr><td><b>Country: </b></td><td>" . "<a href = \"country.php?id=" . $obj["country_id"] . "\"> $obj["city_name] </a>" . "</td></tr>";
+				echo "<tr><td><b>Country: </b></td><td>" . "<a href = \"country.php?id=" . $obj["country_id"] . "\"> $countryName </a>" . "</td></tr>";
 				echo "<tr><td><b>City: </b></td><td>" . $obj["city_name"] . "</td></tr>";
 				echo "<tr><td><b>Region: </b></td><td>" . $obj["city_region"] . "</td></tr>";
 				echo "<tr><td><b>Population: </b></td><td>" . $obj["city_population"] . " people </td></tr>";
@@ -34,7 +46,7 @@
 				echo "<tr><td colspan = 2><br/><br/><br/><center><img src = \"" . $obj["city_map"] . "\" alt = \"pic\" width = \"65%\" /></td></center></tr>";
 				echo "</table>";
 			}
-		//}
+		}
 
 	
 	/**get the city comments
