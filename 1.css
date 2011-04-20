@@ -105,7 +105,16 @@ background-color : #ffffff;
 background: url(picks/globe.png) #fff center;
 float : left; 
 width : 140px; 
-height : 270px; 
+height : 160px; 
+margin : 0.2em 0 0 0.05em; 
+border : 1.5px solid #0000A0; 
+background-color : #ffffff; 
+} 
+.nav-box3 {
+background: url(picks/globe.png) #fff center;
+float : left; 
+width : 140px; 
+height : 250px; 
 margin : 0.2em 0 0 0.05em; 
 border : 1.5px solid #0000A0; 
 background-color : #ffffff; 
@@ -127,17 +136,31 @@ background-color : #6ca2be;
 .s3 {
 float : left; 
 width : 4px; 
-height : 270px; 
+height : 160px; 
 margin-left : 0.01em; 
 background-color : #b8a07a; 
 } 
 .s4 {
 float : left; 
 width : 4px; 
-height : 270px; 
+height : 160px; 
 margin-left : 0.05em; 
 background-color : #6ca2be; 
 } 
+.s5 {
+float : left; 
+width : 4px; 
+height : 250px; 
+margin-left : 0.01em; 
+background-color : #b8a07a; 
+} 
+.s6 {
+float : left; 
+width : 4px; 
+height : 250px; 
+margin-left : 0.05em; 
+background-color : #6ca2be; 
+}
 .nav-box-text {
 width : 100px; 
 height : 35px; 
@@ -147,11 +170,18 @@ background-color : #fefdfb;
 } 
 .nav-box-text2 {
 width : 100px; 
-height : 240px; 
+height : 130px; 
 margin-top : 1em; 
 margin-left : 1.5em; 
 background-color : #fefdfb; 
 } 
+.nav-box-text3 {
+width : 100px; 
+height : 221px; 
+margin-top : 1em; 
+margin-left : 1.5em; 
+background-color : #fefdfb; 
+}
 h1 {
 font-size : 2em; 
 color : #4b5658; 

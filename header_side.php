@@ -154,12 +154,12 @@ while($row = mysqli_fetch_array($result)) {
 <?php
 //cities link and city count:
 ?>
-<div class="nav-box2">
-<div class="s1">
+<div class="nav-box3">
+<div class="s5">
 </div>
-<div class="s2">
+<div class="s6">
 </div>
-<div class="nav-box-text2">
+<div class="nav-box-text3">
 <span style="font-family:geneva,arial;color:#153E7E;font-size:14px;font-weight:bold;padding-left:1px;"><a href="cities.php">CITIES</a></span>
 <br />
 <span style="font-family:geneva,arial;color:#6CA2BE;font-size:10px;font-weight:bold;  font-style: italic; letter-spacing: 2px;
