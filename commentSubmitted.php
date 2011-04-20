@@ -8,28 +8,26 @@
 <body>
 
 <?php
-	$nameSubmitted = $_POST['name'];
-	$subjectSubmitted = $_POST['subject'];
-	$commentSubmitted = $_POST['comment'];
+	//get the submitted values	
+	$nameSubmitted = strip_tags($_POST['name']);
+	$subjectSubmitted = strip_tags($_POST['subject']);
+	$commentSubmitted = strip_tags($_POST['comment']);
 	$date = getdate();
 	
 	$timestamp = $date[year] . "-" . $date[mon] . "-" . $date[mday] 
 					. " " . $date[hours] . ":" . $date[minutes] . ":" . $date[seconds];
 
 	
-	//get the submitted values				
-	$name = mysqli_real_escape_string($db, trim($nameSubmitted));
-	$subject = mysqli_real_escape_string($db, strip_tags(trim($subjectSubmitted)));
-	$comment = mysqli_real_escape_string($db, strip_tags(trim($commentSubmitted)));
-	
+	$collection = $db -> comments;
+	//$cursor = $collection -> find();
+
 
 	//if all fields are completed, then insert the comment into the table
-	if (($name!="") AND ($subject!="") AND ($comment!="")){
+	if (($nameSubmitted !="") AND ($subjectSubmitted !="") AND ($commentSubmitted !="")){
 
-		$query = "INSERT INTO comments (comment_name, comment_subject, comment_body, comment_date_submitted) VALUES ('$name', '$subject', '$comment', '$timestamp')";
-	
-		$result = mysqli_query($db, $query) or die ("Error Querying Database");
-		mysqli_close($db);
+		$obj = array("name"=>$nameSubmitted, "subject"=>$subjectSubmitted, "comment"=>$commentSubmitted, "date"=>$timestamp);
+		
+		$collection->insert($obj);
 	
 	
 	
