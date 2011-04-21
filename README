@@ -1,0 +1,9 @@
+Hello there.  Thanks for cloning our Europeann TravelGuide repository!
+This project is a smaller version of our TravelGuide project, using
+MongoDB instead of MySQL.
+
+To install the database, use mongoimport on the countries.csv, cities.csv, 
+comments.csv, and city_comments.csv files in your mongodb bin file, or use 
+mongorestore with the dump file.
+
+We hope you enjoy our European TravelGuide!
