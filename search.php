@@ -24,25 +24,25 @@
 	if ($type == 'country') {
 		$collection = $db->countries;
 	
-		//find a matching country
-		//$cursor = $collection->find();
-		
-		$query = array("country_name" => $termSearched);
+		//find any matching countries
+		$regexObj = new MongoRegex("/.*$termSearched.*/");
+		$query = array("country_name" => $regexObj);
 
 		$cursor = $collection->find($query);
 
 		
-		//{"country_name": "England"}
-		//array("country_name" -> "/." . $termSearched . ".*/i"
-		echo '<u><big>Countries</u></big><br>';
+		//Countries header
+		echo '<u><font size = 5>Countries</u></font><br><br/>';
+		echo "<font size = 3>";
 		
-		// iterate through the results
+		//iterate through the results
+		//print results - country flag and name as link to country page
 		foreach ($cursor as $obj) {
-			//if (strtolower($obj["country_name"]) == strtolower($termSearched)) {
-				echo "<a href=country.php?id=".$obj["country_id"] . " >" . $obj["country_name"] . "</a>\n";
-			//}
+			echo "<a href=country.php?id=".$obj["country_id"] . " >"
+					. "<img src = \"" .$obj["country_flag"] . "\" alt = \"pic\" width = \"25%\" />"
+					. "<br/><b>" . $obj["country_name"] . "</b></a><br/><br/>";
 		}
-		
+		echo "</font>";
 		
 		
 	
@@ -50,20 +50,25 @@
 	// else if the type is of city, then look and see if the term searched is similar to any of the city names
 	elseif ($type == 'city') {
 		$collection = $db -> cities;
-	
-		//find a matching country
-		$cursor = $collection->find();
 		
+		//find any matching cities
+		$regexObj = new MongoRegex("/.*$termSearched.*/");
+		$query = array("city_name" => $regexObj);
+
+		$cursor = $collection->find($query);
 		
-		//{"country_name": "England" )}
-		echo '<u><big>Cities</u></big><br>';
+		//Cities header
+		echo '<u><font size = 5>Cities</u></font><br><br/>';
+		echo "<font size = 3>";
 		
-		// iterate through the results
+		//iterate through the results
+		//print results - city photo and name as link to city page
 		foreach ($cursor as $obj) {
-			if (strtolower($obj["city_name"]) == strtolower($termSearched)) {
-				echo "<a href=city.php?id=".$obj["city_id"] . " >" . $obj["city_name"] . "</a>\n";
-			}
+			echo "<a href=city.php?id=".$obj["city_id"] . " >"
+					. "<img src = \"" .$obj["city_picture"] . "\" alt = \"pic\" width = \"25%\" />"
+					. "<br/><b>" . $obj["city_name"] . "</b></a><br/><br/>";
 		}
+		echo "</font>";
 	} 
 
 

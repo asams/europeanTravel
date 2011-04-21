@@ -40,9 +40,10 @@
 
 <div class="content">
 
-<h1><center>Thanks for your comment!</h1>
+<center>
+<h1>Thanks for your comment!</h1>
 
-<h2>We're always glad to hear from you!  We'll review your comment and see what we can do! <br/><br/>
+<h2>We're always glad to hear from you!<br/>We'll review your comment and see what we can do! <br/><br/>
 
 <?php
 	//one of the fields must have been empty, therefore, an error message is displayed
@@ -50,12 +51,13 @@
 ?>
 		<div class="content">
 		
-		<h2><center>Your comment was not sent. You did not fill in all of the fields. Please revisit <a href="contactUs.php">this page</a>. <br>
+		<h2><center>Your comment was not sent. You did not fill in all of the fields.<br/> Please revisit <a href="contactUs.php">this page</a>. <br>
 <?php
 	}
 ?>
 
-Want to see what other people have said?  View all the comments we've received <a href = "comments.php">here</a>.
+Want to see what other people have said?  <br/>View all the comments we've received <a href = "comments.php">here</a>.
+</center>
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></center>
 </h2>

@@ -53,9 +53,9 @@
 ?>
 
 <br/><br/><br/><br/>
-<h1>Comments for <?php echo $cityName ?> : </h1><br/>
+<h1>Comments for <?php echo $cityName ?> : </h1>
 
-<br/><br/>
+<br/>
 <form action="cityCommentSubmitted.php" method="post" class="form">
 <center>
 <table>
@@ -82,8 +82,10 @@
 	$collection = $db -> city_comments;
 	$cursor = $collection -> find();
 	
+	$count = 0;
 	foreach ($cursor as $obj) {
 		if (($obj["city_id"]) == $cityID) {
+			$count++;
 			$cityID = $obj["city_id"];
 			$name = $obj["name"];
 			$subject = $obj["subject"];
@@ -93,6 +95,9 @@
 		}
 	}
 
+	if($count == 0){
+		echo "<h2>No one has commented on $cityName yet!</h2>";
+	}
 ?>
 </table>
 </div>
